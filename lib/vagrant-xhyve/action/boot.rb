@@ -24,6 +24,7 @@ module VagrantPlugins
           env[:metrics] ||= {}
 
           machine_info_path = File.join(env[:machine].data_dir, "xhyve.json")
+          env[:ui].info("machine_info_path #{machine_info_path}")
           if File.exist?(machine_info_path)
             machine_json = File.read(machine_info_path)
             machine_options = JSON.parse(machine_json, :symbolize_names => true)
@@ -32,7 +33,7 @@ module VagrantPlugins
             pid = machine_options[:pid]
             mac = machine_options[:mac]
           else
-            machine_uuid = SecureRandom.uuid
+            machine_uuid = uuid(env)
           end
 
           guest_config = {
@@ -90,6 +91,10 @@ module VagrantPlugins
 
         def memory(env)
           provider_config(env).memory
+        end
+
+        def uuid(env)
+          provider_config(env).uuid
         end
 
         def cpus(env)

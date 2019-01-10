@@ -40,19 +40,28 @@ module VagrantPlugins
         end
 
         def build_command
-          [
+          cmd = [
+            "sudo",
             "#{@binary}",
             "#{'-A' if @acpi}",
             '-U', @uuid,
             '-m', @memory,
             '-c', @processors,
             '-s', '0:0,hostbridge',
-            "#{"-s #{PCI_BASE - 1}:0,virtio-net" if @networking }" ,
+            "#{"-s #{PCI_BASE - 2}:0,virtio-net,en0" if @networking }" ,
             "#{build_block_device_parameter}",
             '-s', '31,lpc',
             '-l', "#{@serial},stdio",
             '-f', "kexec,#{@kernel},#{@initrd},'#{@cmdline}'"
           ].join(' ')
+
+          log.info(" cmd: #{cmd}")
+
+          cmd
+        end
+
+        def log
+          @logger ||= Log4r::Logger.new("vagrant_xhyve::vagrant_xhyve")
         end
 
         def build_block_device_parameter

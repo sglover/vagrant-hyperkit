@@ -32,7 +32,7 @@ module VagrantPlugins
         end
 
         def kill_xhyve_process(env)
-          Process.kill(3, pid(env))
+          Process.kill(15, pid(env))
         end
 
         def destroy_xhyve_status_file(env)

@@ -39,6 +39,8 @@ module VagrantPlugins
 
         # Return the MachineState object
         Vagrant::MachineState.new(state_id, short, long)
+      rescue
+        Vagrant::MachineState.new(:not_running, "", "")
       end
 
       def to_s

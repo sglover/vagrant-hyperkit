@@ -2,7 +2,7 @@ require "vagrant"
 require "iniparse"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     class Config < Vagrant.plugin("2", :config)
 
 

@@ -1,6 +1,6 @@
-# vagrant-xhyve Box Format
+# vagrant-hyperkit Box Format
 
-A vagrant-xhyve box, like all vagrant boxes is an archive of a directory of
+A vagrant-hyperkit box, like all vagrant boxes is an archive of a directory of
 files with a metadata file, a kernel, ramdisk, and optionally some raw disk
 images.
 
@@ -19,7 +19,7 @@ that is it looks like:
 
 ```
 {
-    "provider": "xhyve"
+    "provider": "hyperkit"
 }
 ```
 

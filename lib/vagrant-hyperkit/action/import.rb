@@ -3,7 +3,7 @@ require "json"
 require "fileutils"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This terminates the running instance.
       class Import
@@ -61,7 +61,7 @@ module VagrantPlugins
         end
 
         def log
-          @logger ||= Log4r::Logger.new("vagrant_xhyve::action::import")
+          @logger ||= Log4r::Logger.new("vagrant_hyperkit::action::import")
         end
       end
     end

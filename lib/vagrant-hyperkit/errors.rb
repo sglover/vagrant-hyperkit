@@ -1,10 +1,10 @@
 require "vagrant"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Errors
       class VagrantXHYVEError < Vagrant::Errors::VagrantError
-        error_namespace("vagrant_xhyve.errors")
+        error_namespace("vagrant_hyperkit.errors")
       end
 
       class RsyncError < VagrantXYHVEError

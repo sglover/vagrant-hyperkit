@@ -1,4 +1,4 @@
-require "vagrant-xhyve/config"
+require "vagrant-hyperkit/config"
 require 'rspec/its'
 
 # remove deprecation warnings
@@ -13,7 +13,7 @@ RSpec.configure do |config|
   end
 end
 
-describe VagrantPlugins::XHYVE::Config do
+describe VagrantPlugins::HYPERKIT::Config do
   let(:instance) { described_class.new }
 
   before :each do

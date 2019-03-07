@@ -1,10 +1,10 @@
 require "pathname"
 
-require "vagrant-xhyve/plugin"
+require "vagrant-hyperkit/plugin"
 
 module VagrantPlugins
-  module XHYVE
-    lib_path = Pathname.new(File.expand_path("../vagrant-xhyve", __FILE__))
+  module HYPERKIT
+    lib_path = Pathname.new(File.expand_path("../vagrant-hyperkit", __FILE__))
     autoload :Action, lib_path.join("action")
     autoload :Errors, lib_path.join("errors")
 

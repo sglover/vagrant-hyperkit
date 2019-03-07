@@ -1,13 +1,13 @@
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
-      class MessageNotCreated
+      class MessageAlreadyCreated
         def initialize(app, env)
           @app = app
         end
 
         def call(env)
-          env[:ui].info(I18n.t("vagrant_xhyve.not_created"))
+          env[:ui].info(I18n.t("vagrant_xhyve.already_status", :status => "created"))
           @app.call(env)
         end
       end

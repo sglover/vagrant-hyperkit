@@ -1,7 +1,7 @@
 require "log4r"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This action reads the state of the machine and puts it in the
       # `:machine_state_id` key in the environment.
@@ -9,7 +9,7 @@ module VagrantPlugins
         def initialize(app, env)
           @app = app
           @env = env
-          @logger = Log4r::Logger.new("vagrant_xhyve::action::read_state")
+          @logger = Log4r::Logger.new("vagrant_hyperkit::action::read_state")
         end
 
         def call(env)

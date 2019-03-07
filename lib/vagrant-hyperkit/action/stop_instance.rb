@@ -1,13 +1,13 @@
 require "log4r"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This stops the running instance.
       class StopInstance
         def initialize(app, env)
           @app    = app
-          @logger = Log4r::Logger.new("vagrant_xhyve::action::stop_instance")
+          @logger = Log4r::Logger.new("vagrant_hyperkit::action::stop_instance")
         end
 
         def call(env)

@@ -1,5 +1,5 @@
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Util
       class Timer
         # A basic utility method that times the execution of the given

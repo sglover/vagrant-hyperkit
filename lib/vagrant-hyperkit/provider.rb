@@ -2,7 +2,7 @@ require "log4r"
 require "vagrant"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     class Provider < Vagrant.plugin("2", :provider)
       def initialize(machine)
         @machine = machine
@@ -16,6 +16,21 @@ module VagrantPlugins
         return Action.send(action_method) if Action.respond_to?(action_method)
         nil
       end
+
+      # def ssh_info
+      #   droplet = Provider.droplet(@machine)
+
+      #   return nil if droplet['status'].to_sym != :active
+
+      #   public_network = droplet['networks']['v4'].find { |network| network['type'] == 'public' }
+
+      #   return {
+      #     :host => public_network['ip_address'],
+      #     :port => '22',
+      #     :username => 'root',
+      #     :private_key_path => nil
+      #   }
+      # end
 
       def ssh_info
         # Run a custom action called "read_ssh_info" which does what it

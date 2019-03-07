@@ -1,5 +1,5 @@
 en:
-  vagrant_xhyve:
+  vagrant_hyperkit:
     already_status: |-
       The machine is already %{status}.
     launching_instance: |-

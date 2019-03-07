@@ -1,15 +1,15 @@
 require "log4r"
-require 'vagrant-xhyve/util/vagrant-xhyve'
+require 'vagrant-hyperkit/util/vagrant-hyperkit'
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This action reads the SSH info for the machine and puts it into the
       # `:machine_ssh_info` key in the environment.
       class ReadSSHInfo
         def initialize(app, env)
           @app    = app
-          @logger = Log4r::Logger.new("vagrant_xhyve::action::read_ssh_info")
+          @logger = Log4r::Logger.new("vagrant_hyperkit::action::read_ssh_info")
         end
 
         def call(env)

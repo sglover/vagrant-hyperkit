@@ -1,21 +1,22 @@
 $:.unshift File.expand_path("../lib", __FILE__)
-require "vagrant-xhyve/version"
+require "vagrant-hyperkit/version"
 
 Gem::Specification.new do |s|
-  s.name          = "vagrant-xhyve"
-  s.version       = VagrantPlugins::XHYVE::VERSION
+  s.name          = "vagrant-hyperkit"
+  s.version       = VagrantPlugins::HYPERKIT::VERSION
   s.platform      = Gem::Platform::RUBY
   s.license       = "MIT"
   s.authors       = "Patrick Armstrong"
   s.email         = "pat@oldpatricka.com"
   s.homepage      = "http://github.com/oldpatricka/vagrant-xhyve"
-  s.summary       = "Enables Vagrant to manage machines in xhyve."
-  s.description   = "Enables Vagrant to manage machines in xhyve."
+  s.summary       = "Enables Vagrant to manage machines in hyperkit."
+  s.description   = "Enables Vagrant to manage machines in hyperkit."
 
   s.required_rubygems_version = ">= 1.3.6"
-  s.rubyforge_project         = "vagrant-xhyve"
+  s.rubyforge_project         = "vagrant-hyperkit"
 
   s.add_runtime_dependency "xhyve-ruby", ">= 0.0.6"
+  s.add_runtime_dependency "net-ssh"
   s.add_runtime_dependency "iniparse", "~> 1.4", ">= 1.4.2"
 
   s.add_development_dependency "rake"

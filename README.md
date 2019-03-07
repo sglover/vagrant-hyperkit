@@ -1,3 +1,65 @@
+
+
+bundle install
+
+
+
+
+
+508  bundler build
+  509  bundle build
+  510  bundle gem vagrant-xhyve
+  511  ls -l
+  512  ls -ltr
+  513  find . -name '*gem' -print
+  514  bundle package
+  515  rake build
+  516  ls -l
+  517  df -h
+  518  rake build --trace
+  519  ruby --version
+  520  rake build --help
+  521  rake build -v
+  522  rake build --help
+  523  rake build -t
+  524  pwd
+  525  rake build
+  526  vagrant plugin list
+  527  pwd
+  528  rake build
+  529  rake build
+  530  ls -l
+  531  sudo rm Gemfile.lock 
+  532  rake build
+  533  pwd
+  534  sudo bundle install
+  535  rake build
+  536  ls -l
+  537  ls -l pkg/
+  538  vagrant plugin list
+  539  vagrant plugin --help
+  540  vagrant plugin uninstall vagrant-xhyve
+  541  vagrant plugin install pkg/vagrant-xhyve-0.4.2.gem 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Vagrant xhyve Provider
 
 [![Gem Version](https://badge.fury.io/rb/vagrant-xhyve.svg)](https://badge.fury.io/rb/vagrant-xhyve)

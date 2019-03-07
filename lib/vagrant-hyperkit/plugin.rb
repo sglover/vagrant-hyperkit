@@ -1,30 +1,30 @@
 begin
   require "vagrant"
 rescue LoadError
-  raise "The Vagrant XHYVE plugin must be run within Vagrant."
+  raise "The Vagrant HYPERKIT plugin must be run within Vagrant."
 end
 
 # This is a sanity check to make sure no one is attempting to install
 # this into an early Vagrant version.
 if Vagrant::VERSION < "1.2.0"
-  raise "The Vagrant XHYVE plugin is only compatible with Vagrant 1.2+"
+  raise "The Vagrant HYPERKIT plugin is only compatible with Vagrant 1.2+"
 end
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     class Plugin < Vagrant.plugin("2")
-      name "XHYVE"
+      name "HYPERKIT"
       description <<-DESC
       This plugin installs a provider that allows Vagrant to manage
       machines in XHYVE.
       DESC
 
-      config(:xhyve, :provider) do
+      config(:hyperkit, :provider) do
         require_relative "config"
         Config
       end
 
-      provider(:xhyve) do
+      provider(:hyperkit) do
         # Setup logging and i18n
         setup_logging
         setup_i18n
@@ -36,7 +36,7 @@ module VagrantPlugins
  
       # This initializes the internationalization strings.
       def self.setup_i18n
-        I18n.load_path << File.expand_path("locales/en.yml", XHYVE.source_root)
+        I18n.load_path << File.expand_path("locales/en.yml", HYPERKIT.source_root)
         I18n.reload!
       end
 
@@ -62,7 +62,7 @@ module VagrantPlugins
         # Set the logging level on all "vagrant" namespaced
         # logs as long as we have a valid level.
         if level
-          logger = Log4r::Logger.new("vagrant_xhyve")
+          logger = Log4r::Logger.new("vagrant_hyperkit")
           logger.outputters = Log4r::Outputter.stderr
           logger.level = level
           logger = nil

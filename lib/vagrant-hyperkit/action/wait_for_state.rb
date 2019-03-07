@@ -2,7 +2,7 @@ require "log4r"
 require "timeout"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This action will wait for a machine to reach a specific state or quit by timeout
       class WaitForState

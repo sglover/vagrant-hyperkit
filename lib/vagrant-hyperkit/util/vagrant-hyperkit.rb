@@ -1,16 +1,21 @@
 require 'xhyve'
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Util
       # TODO: send all this upstream
       class XhyveGuest < Xhyve::Guest
 
         def initialize(**opts)
+          log.info("Guest1")
           super.tap do |s|
+            log.info("Guest2")
             @pid = opts.fetch(:pid, nil)
+            log.info("Guest3")
             @mac = opts[:mac] unless opts[:mac].nil?
+            log.info("Guest4")
           end
+          log.info("Guest5")
         end
 
         def start
@@ -55,13 +60,11 @@ module VagrantPlugins
             '-f', "kexec,#{@kernel},#{@initrd},'#{@cmdline}'"
           ].join(' ')
 
-          log.info(" cmd: #{cmd}")
-
           cmd
         end
 
         def log
-          @logger ||= Log4r::Logger.new("vagrant_xhyve::vagrant_xhyve")
+          @logger ||= Log4r::Logger.new("vagrant_hyperkit::vagrant_hyperkit")
         end
 
         def build_block_device_parameter

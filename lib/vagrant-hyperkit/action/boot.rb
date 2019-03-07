@@ -2,13 +2,14 @@ require "log4r"
 require 'json'
 require 'securerandom'
 
+require 'net/ssh'
 require 'vagrant/util/retryable'
 
-require 'vagrant-xhyve/util/timer'
-require 'vagrant-xhyve/util/vagrant-xhyve'
+require 'vagrant-hyperkit/util/timer'
+require 'vagrant-hyperkit/util/vagrant-hyperkit'
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This runs the configured instance.
       class Boot
@@ -54,7 +55,23 @@ module VagrantPlugins
           # Terminate the instance if we were interrupted
           terminate(env) if env[:interrupted]
 
+          100.times do |i|
+            begin
+              ssh_try(xhyve_guest.ip, "accanto", "accanto")
+            rescue StandardError => e
+              env[:ui].error("SSL error: #{e.inspect}")
+              redo
+            end
+          end
+
           @app.call(env)
+        end
+
+        def ssh_try(host, user, pass)
+          Net::SSH.start( host.to_s, user.to_s, :password => pass.to_s ) do |ssh|
+            ssh.exec!('date')
+            ssh.close
+          end
         end
 
         def recover(env)
@@ -115,6 +132,7 @@ module VagrantPlugins
 
         def start_guest(env, config = {})
           image_dir = File.join(env[:machine].data_dir, "image")
+          env[:ui].info("Starting1")
           default_config = {
             kernel: kernel_file_path(image_dir),
             initrd: initrd_file_path(image_dir),
@@ -123,10 +141,13 @@ module VagrantPlugins
             networking: true,
             acpi: true
           }
+          env[:ui].info("Starting2")
           config = default_config.merge(config)
-          log.debug "xhyve configuration: #{JSON.pretty_generate(config)}"
-          xhyve_guest = Util::XhyveGuest.new config
+          env[:ui].info("Starting3")
+          xhyve_guest = Util::XhyveGuest.new(env, config)
+          env[:ui].info("Starting4")
           xhyve_guest.start
+          env[:ui].info("Starting5")
           xhyve_guest
         end
 
@@ -161,7 +182,7 @@ module VagrantPlugins
         end
 
         def log
-          @logger ||= Log4r::Logger.new("vagrant_xhyve::action::boot")
+          @logger ||= Log4r::Logger.new("vagrant_hyperkit::action::boot")
         end
       end
     end

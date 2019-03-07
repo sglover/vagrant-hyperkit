@@ -1,7 +1,7 @@
-require "vagrant-xhyve/util/timer"
+require "vagrant-hyperkit/util/timer"
 
 module VagrantPlugins
-  module XHYVE
+  module HYPERKIT
     module Action
       # This is the same as the builtin provision except it times the
       # provisioner runs.

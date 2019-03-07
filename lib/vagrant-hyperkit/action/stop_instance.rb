@@ -12,10 +12,10 @@ module VagrantPlugins
 
         def call(env)
           if is_process_alive? pid(env)
-            env[:ui].info(I18n.t("vagrant_xhyve.stopping"))
+            env[:ui].info(I18n.t("vagrant_hyperkit.stopping"))
             kill_xhyve_process(env)
           else
-            env[:ui].info(I18n.t("vagrant_xhyve.already_status", status: env[:machine].state.id))
+            env[:ui].info(I18n.t("vagrant_hyperkit.already_status", status: env[:machine].state.id))
           end
           destroy_xhyve_status_file(env)
           @app.call(env)

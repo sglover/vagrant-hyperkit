@@ -49,8 +49,8 @@ module VagrantPlugins
         state_id = env[:machine_state_id]
 
         # Get the short and long description
-        short = I18n.t("vagrant_xhyve.states.short_#{state_id}")
-        long  = I18n.t("vagrant_xhyve.states.long_#{state_id}")
+        short = I18n.t("vagrant_hyperkit.states.short_#{state_id}")
+        long  = I18n.t("vagrant_hyperkit.states.long_#{state_id}")
 
         # Return the MachineState object
         Vagrant::MachineState.new(state_id, short, long)

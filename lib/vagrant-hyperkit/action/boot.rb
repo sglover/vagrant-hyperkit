@@ -132,7 +132,6 @@ module VagrantPlugins
 
         def start_guest(env, config = {})
           image_dir = File.join(env[:machine].data_dir, "image")
-          env[:ui].info("Starting1")
           default_config = {
             kernel: kernel_file_path(image_dir),
             initrd: initrd_file_path(image_dir),
@@ -141,13 +140,9 @@ module VagrantPlugins
             networking: true,
             acpi: true
           }
-          env[:ui].info("Starting2")
           config = default_config.merge(config)
-          env[:ui].info("Starting3")
-          xhyve_guest = Util::XhyveGuest.new(env, config)
-          env[:ui].info("Starting4")
+          xhyve_guest = Util::XhyveGuest.new(config)
           xhyve_guest.start
-          env[:ui].info("Starting5")
           xhyve_guest
         end
 

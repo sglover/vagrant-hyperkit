@@ -7,7 +7,7 @@ module VagrantPlugins
         end
 
         def call(env)
-          env[:ui].info(I18n.t("vagrant_xhyve.already_status", :status => "created"))
+          env[:ui].info(I18n.t("vagrant_hyperkit.already_status", :status => "created"))
           @app.call(env)
         end
       end

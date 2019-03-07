@@ -11,7 +11,7 @@ module VagrantPlugins
         # @param [Number] timeout Timeout in seconds.
         def initialize(app, env, state, timeout)
           @app     = app
-          @logger  = Log4r::Logger.new("vagrant_xhyve::action::wait_for_state")
+          @logger  = Log4r::Logger.new("vagrant_hyperkit::action::wait_for_state")
           @state   = state
           @timeout = timeout
         end
@@ -19,7 +19,7 @@ module VagrantPlugins
         def call(env)
           env[:result] = true
           if env[:machine].state.id == @state
-            @logger.info(I18n.t("vagrant_xhyve.already_status", :status => @state))
+            @logger.info(I18n.t("vagrant_hyperkit.already_status", :status => @state))
           else
             @logger.info("Waiting for machine to reach state #{@state}")
             begin

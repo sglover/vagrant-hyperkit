@@ -7,15 +7,10 @@ module VagrantPlugins
       class XhyveGuest < Xhyve::Guest
 
         def initialize(**opts)
-          log.info("Guest1")
           super.tap do |s|
-            log.info("Guest2")
             @pid = opts.fetch(:pid, nil)
-            log.info("Guest3")
             @mac = opts[:mac] unless opts[:mac].nil?
-            log.info("Guest4")
           end
-          log.info("Guest5")
         end
 
         def start

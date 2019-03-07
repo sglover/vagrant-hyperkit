@@ -29,7 +29,11 @@ module Xhyve
       @foreground = opts[:foreground] || false
       @binary = opts[:binary] || BINARY_PATH
       @command = build_command
-      @mac = find_mac
+      #@mac = find_mac
+    end
+
+    def log
+      @logger ||= Log4r::Logger.new("vagrant_hyperkit::xhyve")
     end
 
     def start

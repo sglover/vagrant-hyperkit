@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.version       = VagrantPlugins::HYPERKIT::VERSION
   s.platform      = Gem::Platform::RUBY
   s.license       = "MIT"
-  s.authors       = "Patrick Armstrong"
-  s.email         = "pat@oldpatricka.com"
+  s.authors       = "Patrick Armstrong, Steve Glover (Accanto Systems Ltd)"
+  s.email         = "pat@oldpatricka.com, steve.glover@accantosystems.com"
   s.homepage      = "http://github.com/oldpatricka/vagrant-xhyve"
   s.summary       = "Enables Vagrant to manage machines in hyperkit."
   s.description   = "Enables Vagrant to manage machines in hyperkit."
